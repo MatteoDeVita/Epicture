@@ -1,7 +1,7 @@
 //App.js 
 
 import React from 'react';
-import Log from './Components/Log.jsx'
+import Log from './Components/Log.js'
 import { StyleSheet, View } from 'react-native'
 
 export default class App extends React.Component {

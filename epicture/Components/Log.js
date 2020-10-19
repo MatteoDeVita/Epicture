@@ -1,21 +1,29 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import TextField from './TextField'
+// import TextField from './TextField'
 import Button from 'apsl-react-native-button'
+import EpictureLogo from './EpictureLogo'
+import { TextInput } from 'react-native-paper'
 
 const Log = () => {
     const [loading, setLoading] = useState(false)
     return (
         <View>
+            <EpictureLogo/>
             <View style={styles.View}>
                 <View style={styles.usernameView}>
-                    <TextField
-                        style={styles.usernameTextFiels}                                  
+                    <TextInput
+                        style={styles.usernameTextFiels}
                         placeholder="Username"
+                        mode='outlined'
+                        
                         />
                 </View>
-                <TextField
-                    placeholder="Password"
+                <TextInput
+                        placeholder="Password"
+                        mode='outlined'
+                        secureTextEntry={true}
+                        style={styles.passwordInput}
                     />
             </View>
             <Button
@@ -62,6 +70,9 @@ const styles = StyleSheet.create ({
         fontWeight: 'bold',
         fontSize: 30,
         color: 'rgb(235, 229, 220)'
+    },
+    passwordInput: {
+        fontFamily: 'system font'
     }
 })
 
