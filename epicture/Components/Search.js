@@ -1,7 +1,9 @@
 import React from 'react'
 import {Text ,Button, TextInput} from 'react-native-paper'
-import AppStyles from './AppStyles';
 import { View , FlatList} from 'react-native'
+import AppStyles from './AppStyles'
+import films from '../Helpers/filmsData.js'
+import FilmItem from './FilmItem'
 
 const Search = () => {
     return (
@@ -11,8 +13,9 @@ const Search = () => {
             <Button title="rechercher" onPress={() => {}} />
 
             <FlatList
-                data={[{key: 'a'}, {key: 'b'}]}
-                renderItem={({item}) => <Text>{item.key}</Text>}
+                data={films}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => <FilmItem/>}
             />
         </View>
      
