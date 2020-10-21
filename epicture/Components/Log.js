@@ -20,6 +20,7 @@ data.append('client_secret', '8aa0438f2260576e7d7b5bd5470cecc85e4341ec')
 data.append('grant_type', 'refresh_token')
 
 export default class Log extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
@@ -28,7 +29,6 @@ export default class Log extends Component {
             wrongUsername: false
         }
     }
-
     render() {
         return (            
             <View style={logStyle.globalView}>                

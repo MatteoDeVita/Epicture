@@ -16,8 +16,8 @@ const TopBar = () => {
     )
 };
 
-const AlbumsRoute = () => <Text></Text>;
-const RecentsRoute = () => <Text>Recents</Text>;
+const AlbumsRoute = () => <Text>Test1</Text>;
+const RecentsRoute = () => <Text>Test2</Text>;
 
 const InterfacesWithDownBar = () => {
   const [index, setIndex] = useState(0); //index = 0, setIndex(v) => index = v, useState[index = 0, setIndex(v)]
