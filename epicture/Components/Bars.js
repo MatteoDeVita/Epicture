@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
 import { Platform} from 'react-native'
-import Photos from './Photos.Component';
 import SearchContainer from '../Containers/Search.Container';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import PhotosContainer from '../Containers/Photos.Container'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';

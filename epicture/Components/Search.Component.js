@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import {Text ,Button, TextInput} from 'react-native-paper'
-import { View , FlatList} from 'react-native'
-import films from '../Helpers/filmsData.js'
-import ImagesRender from './ImagesRender'
-import { RectButton, ScrollView } from 'react-native-gesture-handler'
+import { Button, TextInput, Card, Title, Paragraph } from 'react-native-paper'
+import { ScrollView } from 'react-native-gesture-handler'
 
-const DataDisplayer = data => {
-    data.map((elem, index) => (
+const SearchQueryDisplayer = ({data, queryString}) => {    
+
+    if (data.length === 0)
+        return null
+    return data.map((elem, index) => (
         <Card
             key={index}
         >
@@ -26,12 +26,12 @@ const DataDisplayer = data => {
 }
 
 const Search = ({searchFunction, data}) => {
-    const [queryString, setQueryString] = useState('')
+    const [queryString, setQueryString] = useState("")
     return (
         <ScrollView>
             <TextInput
                 placeholder="Photo's name"
-                onChange={text => setQueryString(text)}
+                onChangeText={text => setQueryString(text)}
             />
             <Button
                 title="rechercher"
@@ -39,8 +39,9 @@ const Search = ({searchFunction, data}) => {
             >
                 rechercher
             </Button>
-            <DataDisplayer
+            <SearchQueryDisplayer
                 data={data}
+                queryString={queryString}
             />
         </ScrollView>
      
