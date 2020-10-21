@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
 import * as Progress from 'react-native-progress';
 import { Platform} from 'react-native'
-import Photos from './Photos';
+import Photos from './Photos.Component';
 import Search from './Search';
 import Upload from './Upload';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
@@ -36,8 +36,7 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
     switch (route.key) {
       case 'photos':
         return (
-          <Photos
-          
+          <PhotosContainer
             username={username}
             accessToken={accessToken}
           />
