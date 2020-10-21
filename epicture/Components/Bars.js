@@ -16,8 +16,7 @@ const TopBar = () => {
     )
 };
 
-const AlbumsRoute = () => <Text>Albums</Text>;
-
+const AlbumsRoute = () => <Text></Text>;
 const RecentsRoute = () => <Text>Recents</Text>;
 
 const InterfacesWithDownBar = () => {
@@ -31,12 +30,18 @@ const InterfacesWithDownBar = () => {
     ]
   );
 
-  const renderScene = BottomNavigation.SceneMap({
-    photos: <Photos name="Sara"/>,
-    upload: AlbumsRoute,
-    search: Search,
-    favorites: RecentsRoute,
-  });
+  const renderScene = ({ route }) => {
+    switch (route.key) {
+      case 'photos':
+        return <Photos name="suce"/>;
+      case 'upload':
+        return <AlbumsRoute/>;
+      case 'search':
+          return <Search/>;
+      case 'favorites':
+          return <RecentsRoute/>;
+    }
+  }
 
   return (
     <BottomNavigation

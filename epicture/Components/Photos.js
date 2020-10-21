@@ -8,15 +8,19 @@ const Search = (props) => {
     return (
      
         <View>
-            <Text>props.name</Text>
-            <FlatList
-                data={films}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({item}) => <ImagesRender/>}
-            />
+            <Text>{props.name}</Text>
         </View>
      
     )
 };
 
 export default Search
+
+/*
+<FlatList
+                data={films}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => <ImagesRender/>}
+            />
+
+*/ 
