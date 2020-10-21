@@ -1,16 +1,28 @@
 import React from 'react'
-import {Text ,Button, TextInput} from 'react-native-paper'
 import { View , FlatList} from 'react-native'
-import films from '../Helpers/filmsData.js'
-import ImagesRender from './ImagesRender'
+import {Text ,Button, TextInput, Card} from 'react-native-paper'
 
-const Search = (props) => {
+const Search = ({username, accessToken}) => {
+    let elems = []
+    fetch(`https://api.imgur.com/3/account/${username}/images`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(json => {
+        elems = json.data.map(value => ({
+            link: value.link,
+            title: value.title,
+            name: value.name
+        }))
+        console.log(elems)
+    })
+    .catch(error => console.error(error))
     return (
-     
-        <View>
-            <Text>{props.name}</Text>
-        </View>
-     
+        // {
+        //     elems.map(elem =>)
+        // }
     )
 };
 

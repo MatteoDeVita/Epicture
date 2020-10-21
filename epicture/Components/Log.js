@@ -51,8 +51,9 @@ export default class Log extends Component {
                                 }
                             }
                             authorize(config)
-                            .then(result => {
-                                this.props.setUsername(result.tokenAdditionalParameters.account_username)                                
+                            .then(result => {                                
+                                this.props.setAccessToken(result.accessToken)
+                                this.props.setUsername(result.tokenAdditionalParameters.account_username)
                                 setTimeout(() => {
                                     this.setState({loading: false})
                                     this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })

@@ -19,8 +19,8 @@ const TopBar = () => {
 const AlbumsRoute = () => <Text></Text>;
 const RecentsRoute = () => <Text>Recents</Text>;
 
-const InterfacesWithDownBar = () => {
-  const [index, setIndex] = useState(0); //index = 0, setIndex(v) => index = v, useState[index = 0, setIndex(v)]
+const InterfacesWithDownBar = ({username, accessToken}) => {
+  const [index, setIndex] = useState(0);
   const [routes] = React.useState(
     [
       { key: 'photos', title: 'Photos', icon: 'google-photos' },
@@ -33,7 +33,12 @@ const InterfacesWithDownBar = () => {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'photos':
-        return <Photos name="suce"/>;
+        return (
+          <Photos
+            username={username}
+            accessToken={accessToken}
+          />
+        )
       case 'upload':
         return <AlbumsRoute/>;
       case 'search':

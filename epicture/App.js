@@ -11,6 +11,7 @@ const Stack = createStackNavigator()
 
 const MyStack = () => {
   const [username, setUsername] = useState('')
+  const [accessToken, setAccessToken] = useState('')
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -27,12 +28,12 @@ const MyStack = () => {
             },
           }}
         >
-          {(props) => <Log {...props} setUsername={setUsername} />}
+          {(props) => <Log {...props} setUsername={setUsername} setAccessToken={setAccessToken} />}
         </Stack.Screen>
         <Stack.Screen
           name="io"
         >
-          {(props) => <InterfacesWithDownBar {...props} username={username}/>}
+          {(props) => <InterfacesWithDownBar {...props} username={username} accessToken={accessToken}/>}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer> 
