@@ -22,7 +22,7 @@ export default class SearchContainer extends Component {
         .then(json => {
             this.setState({
                 data: json.data.map(item => ({
-                    link: item.link,
+                    links: item.images != undefined ? item.images.map(image => image.link) : [item.link],
                     title: item.title,
                     name: item.name,
                     description: item.description
@@ -35,7 +35,6 @@ export default class SearchContainer extends Component {
 
     render() {
         const { data } = this.state
-        console.log("data :  ", data)
         return (
             <View>
                 <Search

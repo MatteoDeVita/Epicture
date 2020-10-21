@@ -14,11 +14,14 @@ const SearchQueryDisplayer = ({data, queryString}) => {
             title={elem.title != null ? elem.title : elem.name}
             subtitle={elem.title != null ? elem.name : ''}
         />
-        <Card.Content>
-            <Title>{elem.title != null ? elem.title : ''}</Title>
+        <Card.Content>            
             <Paragraph>{elem.description != null ? elem.description : ''}</Paragraph>
         </Card.Content>
-        <Card.Cover source={{ uri: elem.link }} />
+        {
+            (elem.links.map((link, index) => (
+                    <Card.Cover key={index} source={{ uri: link }} />
+                )))
+        }
         <Card.Actions>
         </Card.Actions>
         </Card>
