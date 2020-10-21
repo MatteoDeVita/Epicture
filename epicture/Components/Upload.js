@@ -30,7 +30,7 @@ export default class Upload extends React.Component {
         <View style={styles.container}>
           <Image
             source={{ uri: this.state.resourcePath.uri }}
-            style={{ width: 300, height: 300 }}
+            style={{ width: 300, height: 300 , margin:20}}
           />
           <TouchableOpacity onPress={this.selectFile} style={styles.button}  >
               <Text style={styles.buttonText}>Select File</Text>
