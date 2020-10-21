@@ -1,21 +1,21 @@
 //App.js 
 
-import React from 'react';
+import React, { useState } from 'react'
 import {StyleSheet, View , Button, Text} from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Log from './Components/Log';
-import { InterfacesWithDownBar } from './Components/Bars';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import Log from './Components/Log'
+import { InterfacesWithDownBar } from './Components/Bars'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 const MyStack = () => {
+  const [username, setUsername] = useState('')
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+        <Stack.Screen
           name="Home"
-          component={Log}
           options={{
             title: 'EPIMGUR MOBILE APP',
             headerStyle: {
@@ -26,8 +26,14 @@ const MyStack = () => {
               fontWeight: 'bold',
             },
           }}
-          />
-        <Stack.Screen name="io" component={InterfacesWithDownBar} />
+        >
+          {(props) => <Log {...props} setUsername={setUsername} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name="io"
+        >
+          {(props) => <InterfacesWithDownBar {...props} username={username}/>}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer> 
   );

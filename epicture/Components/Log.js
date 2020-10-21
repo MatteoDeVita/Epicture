@@ -24,15 +24,14 @@ export default class Log extends Component {
         super(props)
         this.state = {
             loading: false,
-            username: '',
-            wrongUsername: false
+            error: false
         }
     }
 
     render() {
         return (            
-            <View style={logStyle.globalView}>                
-                <EpictureLogo/>                
+            <View style={logStyle.globalView}>
+                <EpictureLogo/>
                 <Button
                     onPress={
                         async () => {
@@ -51,14 +50,23 @@ export default class Log extends Component {
                                     revocationEndpoint: 'https://api.imgur.com/oauth2/revoke'
                                 }
                             }
-                            const result = await authorize(config)
-                            console.log(result)
-                            setTimeout(() => {
-                                this.setState({loading: false})
-                                this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })
-                            }, 1000)
+                            authorize(config)
+                            .then(result => {
+                                this.props.setUsername(result.tokenAdditionalParameters.account_username)                                
+                                setTimeout(() => {
+                                    this.setState({loading: false})
+                                    this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })
+                                }, 1000)
+                            })
+                            .catch(err => {
+                                console.error(err)
+                                this.setState({
+                                    loading: false,
+                                    error: true
+                                })
+                            })
                         }
-                    }            
+                    }
                     style={logStyle.button}
                     textStyle={logStyle.buttonText}
                     style={logStyle.button}
@@ -74,18 +82,18 @@ export default class Log extends Component {
                     Pas encore incrit ? Incrivez vous !
                 </Text>
                 <Dialog 
-                        visible={this.state.wrongUsername}
-                        onDismiss={() => this.setState({wrongUsername: false})}
+                        visible={this.state.error}
+                        onDismiss={() => this.setState({error: false})}
                     >
-                        <Dialog.Title>Wrong username</Dialog.Title>
+                        <Dialog.Title>Error</Dialog.Title>
                         <Dialog.Content>
                             <Paragraph>
-                                Please check that the given username is correct.
+                                An error occured while trying to connect.
                             </Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
                             <PaperButton
-                                onPress={() => this.setState({wrongUsername: false})}
+                                onPress={() => this.setState({error: false})}
                             >
                                 OK
                             </PaperButton>
@@ -95,4 +103,3 @@ export default class Log extends Component {
         )
     }
 }
-
