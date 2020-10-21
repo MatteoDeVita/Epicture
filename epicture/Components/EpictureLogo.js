@@ -19,7 +19,7 @@ const EpictureLogo = ({}) => {
             <Text
                 style={styles.text}
             >
-                EPICTURE
+                EPIMGUR
             </Text>
         </LinearGradient>                
     )

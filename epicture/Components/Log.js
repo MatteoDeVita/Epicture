@@ -19,12 +19,12 @@ const Log = ({navigation}) => {
     const [loading, setLoading] = useState(false)
 
     return (
-        <View style={AppStyles.globalView}>
+        <View style={styles.globalView}>
             <EpictureLogo/>
-            <View style={AppStyles.View}>
-                <View style={AppStyles.usernameView}>
+            <View style={styles.loginView}>
+                <View style={styles.usernameView}>
                     <TextInput
-                        style={AppStyles.usernameTextFiels}
+                        style={styles.usernameTextFiels}
                         placeholder="Username"
                         mode='outlined'
                     />
@@ -33,7 +33,7 @@ const Log = ({navigation}) => {
                         placeholder="Password"
                         mode='outlined'
                         secureTextEntry={true}
-                        style={AppStyles.passwordInput}
+                        style={styles.passwordInput}
                     />
             </View>
             <Button
@@ -46,11 +46,12 @@ const Log = ({navigation}) => {
                     })
                     .then(response => {
                         if (response.status != 200)
-                            setAlert(true)                        
+                            // setAlert(true)                        
                         return response.json()
                     })
                     .then(json => {
                         console.log("RESPONSE : ", json)
+                        setLoading(false)
                         navigation.navigate('io', { name: 'InterfacesWithDownBar' })
                     })
                     .catch(err => console.error("ERROR : ", err))
@@ -58,8 +59,8 @@ const Log = ({navigation}) => {
                     
                 style={styles.button}
                 textStyle={styles.buttonText}
-                style={AppStyles.button}
-                textStyle={AppStyles.buttonText}
+                style={styles.button}
+                textStyle={styles.buttonText}
                 isLoading={loading}
             >
                 Connexion
@@ -77,9 +78,13 @@ const Log = ({navigation}) => {
 
 
 const styles = StyleSheet.create ({
-    View: {
+    globalView: {
+        backgroundColor: 'rgb(238, 154, 35)',
+        height: '100%'
+    },
+    loginView: {
         marginTop: '25%',
-        backgroundColor: 'rgb(231, 154, 35)',
+        backgroundColor: 'rgb(238, 154, 35)',
         marginLeft: '10%',        
         width: '80 %',
         borderWidth: 3,
@@ -113,9 +118,10 @@ const styles = StyleSheet.create ({
         fontFamily: 'system font'
     },
     signUpText: {
+        marginTop: '3%',
         color: 'blue',
-        textDecorationLine
-        : 'underline'
+        textDecorationLine: 'underline',
+        textAlign: 'center'
     }
 })
 

@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Log from './Components/Log';
 import { InterfacesWithDownBar } from './Components/Bars';
-import AppStyles from './Components/AppStyles';
 
 const Stack = createStackNavigator();
 
@@ -20,17 +19,17 @@ const MyStack = () => {
           options={{
             title: 'EPIMGUR MOBILE APP',
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: 'rgb(231, 154, 35)',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
           }}
-        />
+          />
         <Stack.Screen name="io" component={InterfacesWithDownBar} />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
   );
 };
 
