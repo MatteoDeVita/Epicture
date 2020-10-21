@@ -65,6 +65,13 @@ export default class Log extends Component {
                             onChangeText={text => this.setState({username: text})}
                         />
                     </View>                
+                    <TextInput
+                        placeholder="Password"
+                        mode='outlined'
+                        secureTextEntry={true}
+                        style={logStyle.passwordInput}
+                        onChangeText={text => this.setState({username: text})}
+                    />
                 </View>
                 <Button
                     onPress={
