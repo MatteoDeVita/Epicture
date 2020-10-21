@@ -100,7 +100,7 @@ export default class Log extends Component {
                                 }, 1000)
                             }
                         }
-                    }            
+                    }
                     style={logStyle.button}
                     textStyle={logStyle.buttonText}
                     style={logStyle.button}

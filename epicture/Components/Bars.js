@@ -30,7 +30,7 @@ const InterfacesWithDownBar = () => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    photos: Photos,
+    photos: <Photos name="Sara"/>,
     upload: AlbumsRoute,
     search: Search,
     favorites: RecentsRoute,
