@@ -2,18 +2,17 @@ import React from 'react'
 import {Text ,Button, TextInput} from 'react-native-paper'
 import { View , FlatList} from 'react-native'
 import films from '../Helpers/filmsData.js'
-import FilmItem from './FilmItem'
+import ImagesRender from './ImagesRender'
 
 const Search = () => {
     return (
-     
         <View>
-            <TextInput placeholder="titre du film"/>
+            <TextInput placeholder="Photo's name"/>
             <Button title="rechercher" onPress={() => {}} />
             <FlatList
                 data={films}
                 keyExtractor={(item) => item.id.toString()}
-                renderItem={({item}) => <FilmItem/>}
+                renderItem={({item}) => <ImagesRender/>}
             />
         </View>
      

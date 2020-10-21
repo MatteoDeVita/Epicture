@@ -1,13 +1,21 @@
 import React from 'react'
-import { View } from 'react-native'
+import {Text ,Button, TextInput} from 'react-native-paper'
+import { View , FlatList} from 'react-native'
+import films from '../Helpers/filmsData.js'
+import ImagesRender from './ImagesRender'
 
-const Photos = () => {
+const Search = () => {
     return (
      
         <View>
-            
+            <FlatList
+                data={films}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => <ImagesRender/>}
+            />
         </View>
+     
     )
 };
 
-export default Photos
+export default Search
