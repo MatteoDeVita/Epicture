@@ -1,37 +1,66 @@
 import React from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import {Text} from 'react-native-paper'
 import ImagePicker from 'react-native-image-picker';
 
-const Upload = ({username, accessToken}) => {
-  state = {
-    photo: null,
-  };
+export default class Upload extends React.Component {
+  constructor(props) {
+    super(props);
+        this.state = {
+            resourcePath: {},
+        };
+    }
+    selectFile = () => {
+        var options = {
+            title: 'Select Image'
+        };
 
-  handleChoosePhoto = () => {
-    const options = {
-      noData: true,
-    };
-    ImagePicker.launchImageLibrary(options, (response) => {
-      if (response.uri) {
-        this.setState({ photo: response });
-      }
+    ImagePicker.showImagePicker(options, res => {
+        console.log('Response = ', res);
+        let source = res;
+        this.setState({
+          resourcePath: source,
+        });
     });
   };
 
-  
-    const { photo } = this.state;
+  render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {photo && (
+      <View style={styles.container}>
+        <View style={styles.container}>
           <Image
-            source={{ uri: photo.uri }}
-            style={{ width: 300, height: 300 }}
+            source={{ uri: this.state.resourcePath.uri }}
+            style={{ width: 300, height: 300 , margin:20}}
           />
-        )}
-        <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
+          <TouchableOpacity onPress={this.selectFile} style={styles.button}  >
+              <Text style={styles.buttonText}>Select File</Text>
+          </TouchableOpacity>       
+        </View>
       </View>
     );
+  }
+}
 
-};
-
-export default Upload
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+  button: {
+    width: 250,
+    height: 60,
+    backgroundColor: '#3740ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    marginBottom:12    
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 15,
+    color: '#fff'
+  }
+});
