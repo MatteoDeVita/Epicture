@@ -24,7 +24,7 @@ export default logStyle = StyleSheet.create ({
     },
     button: {        
         backgroundColor: 'rgb(113, 32, 244)',
-        borderRadius: 100,
+        borderRadius: 8,
         borderWidth: 2,
         borderColor: 'white',
         width: '75%',

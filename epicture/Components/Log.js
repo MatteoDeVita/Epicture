@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 // import TextField from './TextField'
 import Button from 'apsl-react-native-button'
 import EpictureLogo from './EpictureLogo'
-import { TextInput } from 'react-native-paper'
+import { TextInput} from 'react-native-paper'
 import logStyle from '../stylesheets/Log.stylesheet';
 import { 
     Dialog,

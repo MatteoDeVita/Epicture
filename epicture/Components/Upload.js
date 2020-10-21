@@ -1,16 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
+import {Text} from 'react-native-paper'
 import ImagePicker from 'react-native-image-picker';
 
 export default class Upload extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      resourcePath: {},
-    };
-  }
-
+        this.state = {
+            resourcePath: {},
+        };
+    }
     selectFile = () => {
         var options = {
             title: 'Select Image'
