@@ -1,7 +1,18 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
-import {Text} from 'react-native-paper'
+import {Button, Text} from 'react-native-paper'
 import ImagePicker from 'react-native-image-picker';
+
+
+function handleClick() {  
+    console.log('Le lien a été cliqué.')
+    /*fetch(`https://api.imgur.com/3/upload`, {
+        headers: {
+            Authorization: `Bearer ${this.props.accessToken}`
+        }
+    })*/
+ };
+ 
 
 export default class Upload extends React.Component {
   constructor(props) {
@@ -10,6 +21,7 @@ export default class Upload extends React.Component {
             resourcePath: {},
         };
     }
+    
     selectFile = () => {
         var options = {
             title: 'Select Image'
@@ -25,6 +37,7 @@ export default class Upload extends React.Component {
   };
 
   render() {
+    const { username, accessToken } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.container}>
@@ -34,7 +47,11 @@ export default class Upload extends React.Component {
           />
           <TouchableOpacity onPress={this.selectFile} style={styles.button}  >
               <Text style={styles.buttonText}>Select File</Text>
-          </TouchableOpacity>       
+          </TouchableOpacity>
+          
+            <Button icon="cloud-upload" mode="contained" onPress={handleClick}>
+                SEND
+            </Button>
         </View>
       </View>
     );
