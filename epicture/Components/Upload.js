@@ -1,34 +1,67 @@
 import React from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
-const Upload = ({username, accessToken}) => {
-    state = {
-        photo: null,
-      };
-    
-      handleChoosePhoto = () => {
-        const options = {
-          noData: true,
-        };
-        ImagePicker.launchImageLibrary(options, (response) => {
-          if (response.uri) {
-            this.setState({ photo: response });
-          }
-        });
-      };
-        const { photo } = this.state;
-        return (
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            {photo && (
-              <Image
-                source={{ uri: photo.uri }}
-                style={{ width: 300, height: 300 }}
-              />
-            )}
-            <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
-          </View>
-        );
-};
+export default class Upload extends React.Component {
 
-export default Upload
+  constructor(props) {
+    super(props);
+    this.state = {
+      resourcePath: {},
+    };
+  }
+
+    selectFile = () => {
+        var options = {
+            title: 'Select Image'
+        };
+
+    ImagePicker.showImagePicker(options, res => {
+        console.log('Response = ', res);
+        let source = res;
+        this.setState({
+          resourcePath: source,
+        });
+    });
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.container}>
+          <Image
+            source={{ uri: this.state.resourcePath.uri }}
+            style={{ width: 300, height: 300 }}
+          />
+          <TouchableOpacity onPress={this.selectFile} style={styles.button}  >
+              <Text style={styles.buttonText}>Select File</Text>
+          </TouchableOpacity>       
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+  button: {
+    width: 250,
+    height: 60,
+    backgroundColor: '#3740ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4,
+    marginBottom:12    
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 15,
+    color: '#fff'
+  }
+});

@@ -42,7 +42,10 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
           />
         )
       case 'upload':
-        return <Upload/>;
+        return <Upload
+        username={username}
+        accessToken={accessToken}
+        />;
       case 'search':
           return <SearchContainer/>;
       case 'favorites':
