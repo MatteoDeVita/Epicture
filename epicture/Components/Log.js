@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 import Button from 'apsl-react-native-button'
 import EpictureLogo from './EpictureLogo'
 import { TextInput } from 'react-native-paper'
+import AppStyles from './AppStyles';
 
 const data = new FormData()
 
@@ -14,16 +15,16 @@ data.append('grant_type', 'refresh_token')
 
 //class for conditionnal rendering
 
-const LogPanel = ({setAlert}) => {
+const Log = ({navigation}) => {
     const [loading, setLoading] = useState(false)
 
     return (
-        <View>
+        <View style={AppStyles.globalView}>
             <EpictureLogo/>
-            <View style={styles.View}>
-                <View style={styles.usernameView}>
+            <View style={AppStyles.View}>
+                <View style={AppStyles.usernameView}>
                     <TextInput
-                        style={styles.usernameTextFiels}
+                        style={AppStyles.usernameTextFiels}
                         placeholder="Username"
                         mode='outlined'
                     />
@@ -32,7 +33,7 @@ const LogPanel = ({setAlert}) => {
                         placeholder="Password"
                         mode='outlined'
                         secureTextEntry={true}
-                        style={styles.passwordInput}
+                        style={AppStyles.passwordInput}
                     />
             </View>
             <Button
@@ -48,15 +49,20 @@ const LogPanel = ({setAlert}) => {
                             setAlert(true)                        
                         return response.json()
                     })
-                    .then(json => console.log("RESPONSE : ", json))
+                    .then(json => {
+                        console.log("RESPONSE : ", json)
+                        navigation.navigate('io', { name: 'InterfacesWithDownBar' })
+                    })
                     .catch(err => console.error("ERROR : ", err))
                 }}
                     
                 style={styles.button}
                 textStyle={styles.buttonText}
+                style={AppStyles.button}
+                textStyle={AppStyles.buttonText}
                 isLoading={loading}
             >
-                Connexion !
+                Connexion
             </Button>
             <Text
                 style={styles.signUpText}
@@ -69,24 +75,6 @@ const LogPanel = ({setAlert}) => {
     
 }
 
-const Log = () => {
-    const [alert, setAlert] = useState(false)
-    if (alert === true) {
-        return (
-            <View>
-                <Alert/>
-                <LogPanel
-                    setAlert={setAlert}
-                />
-            </View>
-        )
-    }
-    return (
-        <LogPanel
-            setAlert={setAlert}
-        />
-    )
-}
 
 const styles = StyleSheet.create ({
     View: {

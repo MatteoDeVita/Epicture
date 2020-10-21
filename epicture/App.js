@@ -1,23 +1,37 @@
 //App.js 
 
 import React from 'react';
-import Log from './Components/Log.js'
-import { StyleSheet, View } from 'react-native'
+import {StyleSheet, View , Button, Text} from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Log from './Components/Log';
+import { InterfacesWithDownBar } from './Components/Bars';
+import AppStyles from './Components/AppStyles';
 
-export default class App extends React.Component {
-  render() {
-    return (
-        <View style={styles.globalView}>
-          <Log/>
-        </View>
-    );
-  }
-}
+const Stack = createStackNavigator();
 
+const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Home"
+          component={Log}
+          options={{
+            title: 'EPIMGUR MOBILE APP',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen name="io" component={InterfacesWithDownBar} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-const styles = StyleSheet.create ({
-    globalView: {
-      backgroundColor: 'rgba(244, 161, 32, 0.95)',
-      height: '100%'
-    }
-})
+export default MyStack;
