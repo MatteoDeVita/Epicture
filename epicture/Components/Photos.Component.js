@@ -3,7 +3,7 @@ import { View , FlatList, ScrollView} from 'react-native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import {Text ,Button, TextInput, Card, Title, Paragraph} from 'react-native-paper'
 
-const DataDisplayer = ({data}) => {
+const DataDisplayer = ({data}) => {    
     return data.map((elem, index) => (
         <Card
             key={index}
@@ -18,7 +18,6 @@ const DataDisplayer = ({data}) => {
             </Card.Content>
             <Card.Cover source={{ uri: elem.link }} />
             <Card.Actions>
-                <Button>Supprimer</Button>
             </Card.Actions>
         </Card>
     ))
