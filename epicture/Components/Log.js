@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 import Button from 'apsl-react-native-button'
 import EpictureLogo from './EpictureLogo'
 import { TextInput } from 'react-native-paper'
-import AppStyles from './AppStyles';
+import logStyle from '../stylesheets/Log.stylesheet';
 
 const data = new FormData()
 
@@ -19,12 +19,12 @@ const Log = ({navigation}) => {
     const [loading, setLoading] = useState(false)
 
     return (
-        <View style={styles.globalView}>
+        <View style={logStyle.globalView}>
             <EpictureLogo/>
-            <View style={styles.loginView}>
-                <View style={styles.usernameView}>
+            <View style={logStyle.loginView}>
+                <View style={logStyle.usernameView}>
                     <TextInput
-                        style={styles.usernameTextFiels}
+                        style={logStyle.usernameTextFiels}
                         placeholder="Username"
                         mode='outlined'
                     />
@@ -33,7 +33,7 @@ const Log = ({navigation}) => {
                         placeholder="Password"
                         mode='outlined'
                         secureTextEntry={true}
-                        style={styles.passwordInput}
+                        style={logStyle.passwordInput}
                     />
             </View>
             <Button
@@ -57,16 +57,16 @@ const Log = ({navigation}) => {
                     .catch(err => console.error("ERROR : ", err))
                 }}
                     
-                style={styles.button}
-                textStyle={styles.buttonText}
-                style={styles.button}
-                textStyle={styles.buttonText}
+                style={logStyle.button}
+                textStyle={logStyle.buttonText}
+                style={logStyle.button}
+                textStyle={logStyle.buttonText}
                 isLoading={loading}
             >
                 Connexion
             </Button>
             <Text
-                style={styles.signUpText}
+                style={logStyle.signUpText}
                 onPress={() => Linking.openURL('https://help.imgur.com/hc/en-us/articles/210076633-Create-an-Account')}
             >
                 Pas encore incrit ? Incrivez vous !
@@ -76,53 +76,5 @@ const Log = ({navigation}) => {
     
 }
 
-
-const styles = StyleSheet.create ({
-    globalView: {
-        backgroundColor: 'rgb(238, 154, 35)',
-        height: '100%'
-    },
-    loginView: {
-        marginTop: '25%',
-        backgroundColor: 'rgb(238, 154, 35)',
-        marginLeft: '10%',        
-        width: '80 %',
-        borderWidth: 3,
-        borderStyle: 'solid',
-        borderColor: 'rgb(113, 32, 244)',
-        borderRadius: 7,
-        paddingTop: 30,
-        paddingBottom: 30,
-        paddingLeft: 10,
-        paddingRight: 10,
-    },
-    usernameView: {
-        marginBottom: 50
-    },
-    button: {        
-        backgroundColor: 'rgb(113, 32, 244)',
-        borderRadius: 100,
-        borderWidth: 2,
-        borderColor: 'white',
-        width: '75%',
-        marginLeft: '12.5%',
-        marginTop: 50,
-        height: 80,
-    },
-    buttonText: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        color: 'rgb(235, 229, 220)'
-    },
-    passwordInput: {
-        fontFamily: 'system font'
-    },
-    signUpText: {
-        marginTop: '3%',
-        color: 'blue',
-        textDecorationLine: 'underline',
-        textAlign: 'center'
-    }
-})
 
 export default Log

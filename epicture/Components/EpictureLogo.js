@@ -5,6 +5,8 @@ import {
     View,
     Text
 } from 'react-native'
+import EpictureLogoStyle from '../stylesheets/EpictureLogo.stylesheet'
+
 const EpictureLogo = ({}) => {
     return (       
         <LinearGradient
@@ -14,10 +16,10 @@ const EpictureLogo = ({}) => {
                 'rgba(244, 161, 32, 0.95)',
                 'rgb(113, 32, 244)'
             ]}
-            style={styles.globalView}
+            style={EpictureLogoStyle.globalView}
         >
             <Text
-                style={styles.text}
+                style={EpictureLogoStyle.text}
             >
                 EPIMGUR
             </Text>
@@ -26,24 +28,3 @@ const EpictureLogo = ({}) => {
 }
 
 export default EpictureLogo
-
-const styles = StyleSheet.create({
-    globalView: {     
-        borderWidth: 5,
-        borderRadius: 50,
-        borderColor: 'transparent',
-        marginLeft: '30%',
-        marginRight: '30%',
-        marginTop: '15%',
-        width: '40%',
-        paddingTop: '2%',        
-        paddingBottom: '2%',
-    },
-    text: {
-        color: 'rgb(214, 205, 190)',
-        textAlign: 'center',
-        fontSize: 20,
-        fontFamily: 'SansitaSwashed-VariableFont_wght'
-    }
-
-})

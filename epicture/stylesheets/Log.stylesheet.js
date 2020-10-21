@@ -1,16 +1,19 @@
-import React from 'react';
 import {StyleSheet} from 'react-native'
 
-export default AppStyles = StyleSheet.create ({
-    View: {
+export default logStyle = StyleSheet.create ({
+    globalView: {
+        backgroundColor: 'rgb(238, 154, 35)',
+        height: '100%'
+    },
+    loginView: {
         marginTop: '25%',
-        backgroundColor: '#f4511e',
+        backgroundColor: 'rgb(238, 154, 35)',
         marginLeft: '10%',        
         width: '80 %',
-        borderWidth: 4,
+        borderWidth: 3,
         borderStyle: 'solid',
-       // borderColor: '#f4511e',
-        borderRadius: 10,
+        borderColor: 'rgb(113, 32, 244)',
+        borderRadius: 7,
         paddingTop: 30,
         paddingBottom: 30,
         paddingLeft: 10,
@@ -20,10 +23,10 @@ export default AppStyles = StyleSheet.create ({
         marginBottom: 50
     },
     button: {        
-        backgroundColor: '#f4511e',
-        borderRadius: 10,
-        borderWidth: 4,
-       // borderColor: 'white',
+        backgroundColor: 'rgb(113, 32, 244)',
+        borderRadius: 100,
+        borderWidth: 2,
+        borderColor: 'white',
         width: '75%',
         marginLeft: '12.5%',
         marginTop: 50,
@@ -37,8 +40,10 @@ export default AppStyles = StyleSheet.create ({
     passwordInput: {
         fontFamily: 'system font'
     },
-    globalView: {
-        backgroundColor: '#677aa9', 
-        flex:1
-      }
+    signUpText: {
+        marginTop: '3%',
+        color: 'blue',
+        textDecorationLine: 'underline',
+        textAlign: 'center'
+    }
 })
