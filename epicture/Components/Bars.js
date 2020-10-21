@@ -17,8 +17,8 @@ const TopBar = () => {
     )
 };
 
-const AlbumsRoute = () => <Text></Text>;
-const RecentsRoute = () => <Text>Recents</Text>;
+const AlbumsRoute = () => <Text>Test1</Text>;
+const RecentsRoute = () => <Text>Test2</Text>;
 
 const InterfacesWithDownBar = ({username, accessToken}) => {
   const [index, setIndex] = useState(0);
@@ -41,7 +41,7 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
           />
         )
       case 'upload':
-        return <AlbumsRoute/>;
+        return <Upload/>;
       case 'search':
           return <SearchContainer/>;
       case 'favorites':

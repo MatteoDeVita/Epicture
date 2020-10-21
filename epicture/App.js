@@ -7,7 +7,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Log from './Components/Log'
 import { InterfacesWithDownBar } from './Components/Bars'
 
+
 const Stack = createStackNavigator()
+
 
 const MyStack = () => {
   const [username, setUsername] = useState('')
