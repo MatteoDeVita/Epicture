@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
+import * as Progress from 'react-native-progress';
 import { Platform} from 'react-native'
 import Photos from './Photos';
 import Search from './Search';
+import Upload from './Upload';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
@@ -35,12 +37,13 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
       case 'photos':
         return (
           <Photos
+          
             username={username}
             accessToken={accessToken}
           />
         )
       case 'upload':
-        return <AlbumsRoute/>;
+        return <Upload/>;
       case 'search':
           return <Search/>;
       case 'favorites':

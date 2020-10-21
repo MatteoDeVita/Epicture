@@ -20,6 +20,7 @@ const Search = ({username, accessToken}) => {
     })
     .catch(error => console.error(error))
     return (
+        <View></View>
         // {
         //     elems.map(elem =>)
         // }
