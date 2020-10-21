@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react'
 import {
-    StyleSheet,    
+    StyleSheet,
     View
 } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import {
+    TextInput
+} from 'react-native-paper'
 
-const TextField = ({ style, placeholder }) => {
+const TextField = ({ style, placeholder } ) => {
     return (
-        <View style={styles.Fragment}>
+        <View style={styles.fragment}>
             <TextInput
                 placeholder={placeholder}
             />
@@ -16,7 +18,7 @@ const TextField = ({ style, placeholder }) => {
 }
 
 const styles = StyleSheet.create({
-    Fragment: {
+    fragment: {
         borderStyle: 'solid',
         borderWidth: 1.5,
         borderColor: 'rgba(113, 32, 244, 0.8)',

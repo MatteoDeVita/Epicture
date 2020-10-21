@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 // import TextField from './TextField'
 import Button from 'apsl-react-native-button'
 import EpictureLogo from './EpictureLogo'
 import { TextInput } from 'react-native-paper'
 
-const Log = () => {
+const data = new FormData()
+
+data.append('refresh_token', '6be6c565296abc41dacca3ba3562ff536bc9cf35')
+data.append('client_id', '06a2f239b8f71ea')
+data.append('client_secret', '3ff71735fffb705b43451874e0311fe36c2c2934')
+data.append('grant_type', 'refresh_token')
+
+//class for conditionnal rendering
+
+const LogPanel = ({setAlert}) => {
     const [loading, setLoading] = useState(false)
+
     return (
         <View>
             <EpictureLogo/>
@@ -16,8 +26,7 @@ const Log = () => {
                         style={styles.usernameTextFiels}
                         placeholder="Username"
                         mode='outlined'
-                        
-                        />
+                    />
                 </View>
                 <TextInput
                         placeholder="Password"
@@ -27,14 +36,55 @@ const Log = () => {
                     />
             </View>
             <Button
-                onPress={() => setLoading(true)}
+                onPress={() => {
+                    setLoading(true)
+                    fetch('https://api.imgur.com/oauth2/token', {
+                        method: 'POST',
+                        body: data,
+                        
+                    })
+                    .then(response => {
+                        if (response.status != 200)
+                            setAlert(true)                        
+                        return response.json()
+                    })
+                    .then(json => console.log("RESPONSE : ", json))
+                    .catch(err => console.error("ERROR : ", err))
+                }}
+                    
                 style={styles.button}
                 textStyle={styles.buttonText}
                 isLoading={loading}
             >
                 Connexion !
             </Button>
+            <Text
+                style={styles.signUpText}
+                onPress={() => Linking.openURL('https://help.imgur.com/hc/en-us/articles/210076633-Create-an-Account')}
+            >
+                Pas encore incrit ? Incrivez vous !
+            </Text>
         </View>
+    )
+    
+}
+
+const Log = () => {
+    const [alert, setAlert] = useState(false)
+    if (alert === true) {
+        return (
+            <View>
+                <Alert/>
+                <LogPanel
+                    setAlert={setAlert}
+                />
+            </View>
+        )
+    }
+    return (
+        <LogPanel
+            setAlert={setAlert}
+        />
     )
 }
 
@@ -73,6 +123,11 @@ const styles = StyleSheet.create ({
     },
     passwordInput: {
         fontFamily: 'system font'
+    },
+    signUpText: {
+        color: 'blue',
+        textDecorationLine
+        : 'underline'
     }
 })
 
