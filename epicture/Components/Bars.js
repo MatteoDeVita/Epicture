@@ -4,6 +4,7 @@ import { Platform} from 'react-native'
 import Photos from './Photos.Component';
 import SearchContainer from '../Containers/Search.Container';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Upload from './Upload'
 import PhotosContainer from '../Containers/Photos.Container'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
