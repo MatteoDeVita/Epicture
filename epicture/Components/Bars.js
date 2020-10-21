@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
 import { Platform} from 'react-native'
 import Photos from './Photos';
@@ -21,13 +21,15 @@ const AlbumsRoute = () => <Text>Albums</Text>;
 const RecentsRoute = () => <Text>Recents</Text>;
 
 const InterfacesWithDownBar = () => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'photos', title: 'Photos', icon: 'google-photos' },
-    { key: 'upload', title: 'Upload', icon: 'cloud-upload' },
-    { key: 'search', title: 'Search', icon: 'crop' },
-    { key: 'favorites', title: 'Favorites', icon: 'star' },
-  ]);
+  const [index, setIndex] = useState(0); //index = 0, setIndex(v) => index = v, useState[index = 0, setIndex(v)]
+  const [routes] = React.useState(
+    [
+      { key: 'photos', title: 'Photos', icon: 'google-photos' },
+      { key: 'upload', title: 'Upload', icon: 'cloud-upload' },
+      { key: 'search', title: 'Search', icon: 'crop' },
+      { key: 'favorites', title: 'Favorites', icon: 'star' }
+    ]
+  );
 
   const renderScene = BottomNavigation.SceneMap({
     photos: <Photos name="Sara"/>,

@@ -10,37 +10,14 @@ import {
     Paragraph,
     Button as PaperButton
 } from 'react-native-paper'
+import { authorize } from 'react-native-app-auth'
 
 const data = new FormData()
 
-data.append('refresh_token', '6be6c565296abc41dacca3ba3562ff536bc9cf35')
-data.append('client_id', '9a27fbf7e9aea7e')
+data.append('refresh_token', '063a0926ce059cc1dd506ff9c8ab04acde1700c7')
+data.append('client_id', '06a2f239b8f71ea')
 data.append('client_secret', '8aa0438f2260576e7d7b5bd5470cecc85e4341ec')
 data.append('grant_type', 'refresh_token')
-
-// onPress={() => {
-//     setLoading(true)
-//     fetch('https://api.imgur.com/oauth2/token', {
-//         method: 'POST',
-//         body: data,
-        
-//     })
-//     .then(response => {
-//         if (response.status != 200) {
-//             // setAlert(true)                  
-//             console.log("error")
-//         }
-//         return response.json()
-//     })
-//     .then(json => {
-//         console.log("RESPONSE : ", json)
-//         setLoading(false)
-//         navigation.navigate('io', { name: 'InterfacesWithDownBar' })
-//     })
-//     .catch(err => console.error("ERROR : ", err))
-// }}
-
-//class for conditionnal rendering
 
 export default class Log extends Component {
     constructor(props) {
@@ -55,50 +32,31 @@ export default class Log extends Component {
     render() {
         return (            
             <View style={logStyle.globalView}>                
-                <EpictureLogo/>
-                <View style={logStyle.loginView}>
-                    <View style={logStyle.usernameView}>
-                        <TextInput
-                            style={logStyle.usernameTextFiels}
-                            placeholder="Username"
-                            mode='outlined'
-                            onChangeText={text => this.setState({username: text})}
-                        />
-                    </View>                
-                    <TextInput
-                        placeholder="Password"
-                        mode='outlined'
-                        secureTextEntry={true}
-                        style={logStyle.passwordInput}
-                        onChangeText={text => this.setState({username: text})}
-                    />
-                </View>
+                <EpictureLogo/>                
                 <Button
                     onPress={
                         async () => {
                             this.setState({
                                 loading: true
                             })
-                            const res = await fetch(`https://api.imgur.com/3/account/${this.state.username}`, {
-                                headers: {
-                                    'Authorization': 'Client-ID 9a27fbf7e9aea7e'
+                            const config = {
+                                issuer: 'https://api.imgur.com',
+                                clientId: '06a2f239b8f71ea',
+                                clientSecret: '74d5225e79a05e97bf028ff9e410009db76b76b4',
+                                redirectUrl: 'com.epimgur://callback',
+                                responseType: 'token',
+                                serviceConfiguration: {
+                                    authorizationEndpoint: 'https://api.imgur.com/oauth2/authorize',
+                                    tokenEndpoint: 'https://api.imgur.com/oauth2/token',
+                                    revocationEndpoint: 'https://api.imgur.com/oauth2/revoke'
                                 }
-                            })
-                            console.log(res.status)
-                            if (res.status != 200) {
-                                this.setState({
-                                    loading: false,
-                                    wrongUsername: true
-                                })
-                                console.log(this.state)
                             }
-                            else {
-                                Linking.openURL(`https://api.imgur.com/oauth2/authorize?client_id=9a27fbf7e9aea7e&response_type=token`)                                
-                                setTimeout(() => {
-                                    this.setState({loading: false})
-                                    this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })                                    
-                                }, 1000)
-                            }
+                            const result = await authorize(config)
+                            console.log(result)
+                            setTimeout(() => {
+                                this.setState({loading: false})
+                                this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })
+                            }, 1000)
                         }
                     }
                     style={logStyle.button}
@@ -137,3 +95,4 @@ export default class Log extends Component {
         )
     }
 }
+
