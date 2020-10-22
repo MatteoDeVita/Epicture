@@ -1,6 +1,8 @@
 import React, {useState, useEffect, Component } from 'react'
 import Upload from '../Components/Upload.component'
 
+
+
 export default class UploadComponent extends Component {
     constructor(props) {
         super(props)
@@ -13,20 +15,22 @@ export default class UploadComponent extends Component {
     uploadImage(image) {
         const { accessToken } = this.props
         const data = new FormData()
-        
         data.append('image', image.data)
-        fetch('https://api.imgur.com/3/upload', {
+        console.log(image)
+        fetch('https://api.imgur.com/3/image', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${accessToken}`
             },
             body: data
         })
-        .then(() => {
+        .then((response) => {
             this.setState({
                 loading: false
             })
+            return response.json()
         })
+        .then(json => console.log("json ", json))
         .catch(err => console.error(err))
     }
 

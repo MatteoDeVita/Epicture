@@ -24,7 +24,7 @@ export default class PhotosContainer extends Component {
         .then(json => {
             this.setState(
                 {
-                    data: json.data.map(value => ({            
+                    data: json.data.map(value => ({
                         link: value.link,
                         title: value.title,
                         name: value.name,

@@ -14,10 +14,6 @@ export default class Upload extends React.Component {
     }
     
     selectFile = () => {
-        var options = {
-            title: 'Select Image'
-        };
-
       ImagePicker.showImagePicker({title: 'Select Image'}, response => {
         this.setState({
           image: response
