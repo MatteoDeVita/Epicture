@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from 'react'
 import { View } from 'react-native';
-import Search from '../Components/Search.Component'
+import Search from '../Components/Search.component'
 
 export default class SearchContainer extends Component {
     constructor(props) {

@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
 import { Platform} from 'react-native'
-import SearchContainer from '../Containers/Search.Container';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Upload from './Upload'
-import PhotosContainer from '../Containers/Photos.Container'
+import SearchContainer from '../Containers/Search.container'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import UploadContainer from '../Containers/Upload.container'
+import PhotosContainer from '../Containers/Photos.container'
 
-const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
+const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 
 const TopBar = () => {
     return (
@@ -41,9 +41,9 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
           />
         )
       case 'upload':
-        return <Upload
-        username={username}
-        accessToken={accessToken}
+        return <UploadContainer
+          username={username}
+          accessToken={accessToken}
         />;
       case 'search':
           return <SearchContainer/>;

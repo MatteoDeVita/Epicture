@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Component } from 'react';
-import Photos from "../Components/Photos.Component"
+import Photos from "../Components/Photos.component"
 import { View } from 'react-native';
-import LoadingIndicator from '../Components/LoadingIndicator.Component'
+import LoadingIndicator from '../Components/LoadingIndicator.component'
 
 export default class PhotosContainer extends Component {
     constructor(props) {

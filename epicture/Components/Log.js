@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 import Button from 'apsl-react-native-button'
 import EpictureLogo from './EpictureLogo'
 import { TextInput} from 'react-native-paper'
-import logStyle from '../stylesheets/Log.stylesheet';
+import LogStyle from '../stylesheets/Log.stylesheet';
 import { 
     Dialog,
     Paragraph,
@@ -30,7 +30,7 @@ export default class Log extends Component {
     }
     render() {
         return (            
-            <View style={logStyle.globalView}>
+            <View style={LogStyle.globalView}>
                 <EpictureLogo/>
                 <Button
                     onPress={
@@ -68,16 +68,16 @@ export default class Log extends Component {
                             })
                         }
                     }
-                    style={logStyle.button}
-                    textStyle={logStyle.buttonText}
-                    style={logStyle.button}
-                    textStyle={logStyle.buttonText}
+                    style={LogStyle.button}
+                    textStyle={LogStyle.buttonText}
+                    style={LogStyle.button}
+                    textStyle={LogStyle.buttonText}
                     isLoading={this.state.loading}
                 >
                     Connexion
                 </Button>
                 <Text
-                    style={logStyle.signUpText}
+                    style={LogStyle.signUpText}
                     onPress={() => Linking.openURL('https://help.imgur.com/hc/en-us/articles/210076633-Create-an-Account')}
                 >
                     Pas encore incrit ? Incrivez vous !

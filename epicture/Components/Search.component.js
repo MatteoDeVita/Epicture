@@ -5,7 +5,6 @@ import { View, VirtualizedList } from 'react-native'
 import VideoPlayer from 'react-native-video-player'
 
 const SearchQueryDisplayer = ({data, queryString}) => {    
-
     if (data.length === 0)
         return null
     return data.map((elem, index) => (

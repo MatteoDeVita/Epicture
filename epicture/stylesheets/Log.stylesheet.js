@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-export default logStyle = StyleSheet.create ({
+export default LogStyle = StyleSheet.create ({
     globalView: {
         backgroundColor: 'rgb(238, 154, 35)',
         height: '100%'
