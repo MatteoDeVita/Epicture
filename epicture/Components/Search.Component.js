@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Button, TextInput, Card, Title, Paragraph } from 'react-native-paper'
 import { ScrollView } from 'react-native-gesture-handler'
+import { View, VirtualizedList } from 'react-native'
+import VideoPlayer from 'react-native-video-player'
 
 const SearchQueryDisplayer = ({data, queryString}) => {    
 
@@ -18,9 +20,25 @@ const SearchQueryDisplayer = ({data, queryString}) => {
             <Paragraph>{elem.description != null ? elem.description : ''}</Paragraph>
         </Card.Content>
         {
-            (elem.links.map((link, index) => (
+            (elem.links.map((link, index) => {
+                return link.endsWith('.mp4') ?
+                (
+                    <VideoPlayer
+                        key={index}
+                        video= {{ uri: link }}
+                        autoplay={true}
+                        defaultMuted={true}
+                        pauseOnPress={true}
+                        fullScreenOnLongPress={true}
+                        loop={true}
+                        
+                    />
+                )
+                :
+                (
                     <Card.Cover key={index} source={{ uri: link }} />
-                )))
+                )
+            }))
         }
         <Card.Actions>
         </Card.Actions>
@@ -31,22 +49,24 @@ const SearchQueryDisplayer = ({data, queryString}) => {
 const Search = ({searchFunction, data}) => {
     const [queryString, setQueryString] = useState("")
     return (
-        <ScrollView>
+        <View>
             <TextInput
-                placeholder="Photo's name"
-                onChangeText={text => setQueryString(text)}
+            placeholder="Photo's name"
+            onChangeText={text => setQueryString(text)}
             />
-            <Button
+                <Button
                 title="rechercher"
                 onPress={() => searchFunction(queryString)}
-            >
-                rechercher
-            </Button>
-            <SearchQueryDisplayer
-                data={data}
-                queryString={queryString}
-            />
-        </ScrollView>
+                >
+                    rechercher
+                </Button>
+            <ScrollView>
+                <SearchQueryDisplayer
+                    data={data}
+                    queryString={queryString}
+                    />
+            </ScrollView>
+        </View>
      
     )
 };

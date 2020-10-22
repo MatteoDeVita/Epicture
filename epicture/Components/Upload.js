@@ -20,6 +20,7 @@ export default class Upload extends React.Component {
         this.state = {
             resourcePath: {},
         };
+      this.selectFile = this.selectFile.bind(this)
     }
     
     selectFile = () => {

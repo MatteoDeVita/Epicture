@@ -21,12 +21,13 @@ export default class SearchContainer extends Component {
         .then(response => response.json())
         .then(json => {
             this.setState({
-                data: json.data.map(item => ({
-                    links: item.images != undefined ? item.images.map(image => image.link) : [item.link],
-                    title: item.title,
-                    name: item.name,
-                    description: item.description
-                }))
+                data: json.data.map(item => {
+                    return ({
+                        links: item.images != undefined ? item.images.map(image => image.link) : [item.link],
+                        title: item.title,
+                        name: item.name,
+                        description: item.description
+                    })})                    
             })
         })
         .catch(err => console.error(err))
