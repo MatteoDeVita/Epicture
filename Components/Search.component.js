@@ -3,6 +3,7 @@ import { Button, TextInput, Card, Title, Paragraph } from 'react-native-paper'
 import { ScrollView } from 'react-native-gesture-handler'
 import { View, VirtualizedList } from 'react-native'
 import VideoPlayer from 'react-native-video-player'
+import CardStyles from '../stylesheets/Card.stylesheet'
 
 const SearchQueryDisplayer = ({data, queryString}) => {    
     if (data.length === 0)
@@ -10,6 +11,7 @@ const SearchQueryDisplayer = ({data, queryString}) => {
     return data.map((elem, index) => (
         <Card
             key={index}
+            style={CardStyles.global}
         >
         <Card.Title
             title={elem.title != null ? elem.title : elem.name}
@@ -57,7 +59,7 @@ const Search = ({searchFunction, data}) => {
                 title="rechercher"
                 onPress={() => searchFunction(queryString)}
                 >
-                    rechercher
+                    rechercher (modifer css pour comme vue photos)
                 </Button>
             <ScrollView>
                 <SearchQueryDisplayer

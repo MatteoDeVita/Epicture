@@ -14,9 +14,9 @@ import { authorize } from 'react-native-app-auth'
 
 const data = new FormData()
 
-data.append('refresh_token', '063a0926ce059cc1dd506ff9c8ab04acde1700c7')
+data.append('refresh_token', 'a3bda8db92795258bcad7e1b3da512d391be504c')
 data.append('client_id', '06a2f239b8f71ea')
-data.append('client_secret', '8aa0438f2260576e7d7b5bd5470cecc85e4341ec')
+data.append('client_secret', '751474a3a7fd3504764f9fd97ffe91b237629484')
 data.append('grant_type', 'refresh_token')
 
 export default class Log extends Component {
@@ -41,7 +41,7 @@ export default class Log extends Component {
                             const config = {
                                 issuer: 'https://api.imgur.com',
                                 clientId: '06a2f239b8f71ea',
-                                clientSecret: '74d5225e79a05e97bf028ff9e410009db76b76b4',
+                                clientSecret: '751474a3a7fd3504764f9fd97ffe91b237629484',
                                 redirectUrl: 'com.epimgur://callback',
                                 responseType: 'token',
                                 serviceConfiguration: {
@@ -56,7 +56,7 @@ export default class Log extends Component {
                                 this.props.setUsername(result.tokenAdditionalParameters.account_username)
                                 setTimeout(() => {
                                     this.setState({loading: false})
-                                    this.props.navigation.navigate('io', { name: 'InterfacesWithDownBar' })
+                                    this.props.navigation.navigate('Epimgur', { name: 'InterfacesWithDownBar' })
                                 }, 1000)
                             })
                             .catch(err => {

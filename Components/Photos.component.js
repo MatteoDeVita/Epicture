@@ -4,18 +4,19 @@ import { refresh } from 'react-native-app-auth'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import {Text ,Button, TextInput, Card, Title, Paragraph} from 'react-native-paper'
 import RefreshButton from '../Components/RefreshButton.component'
+import CardStyles  from '../stylesheets/Card.stylesheet'
+import ViewStyles from '../stylesheets/View.stylesheet'
 
 const DataDisplayer = ({data}) => {
     return data.map((elem, index) => (
         <Card
             key={index}
+            style={CardStyles.global}
         >
             <Card.Title
-                title={elem.title != null ? elem.title : elem.name}
-                subtitle={elem.title != null ? elem.name : ''}
+                title={elem.title != null ? elem.title : elem.name}                
             />
-            <Card.Content>
-                <Title>{elem.title != null ? elem.title : ''}</Title>
+            <Card.Content>                
                 <Paragraph>{elem.description != null ? elem.description : ''}</Paragraph>
             </Card.Content>
             <Card.Cover source={{ uri: elem.link }} />
@@ -27,7 +28,9 @@ const DataDisplayer = ({data}) => {
 
 const Photos = ({data, refreshHandler}) => {
     return (
-        <View>
+        <View
+            style={ViewStyles.global}
+        >
            <RefreshButton
                 refreshHandler={refreshHandler}
            />

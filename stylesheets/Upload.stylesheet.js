@@ -2,11 +2,8 @@ import {StyleSheet} from 'react-native'
 
 export default UploadStyles = StyleSheet.create({
     globalView: {
-      paddingTop: 0,
-      // alignItems: 'center',
-      // justifyContent: 'center',
-      backgroundColor: '#fff',
-      // height: '100%'
+      height: '100%',
+      backgroundColor: 'rgba(238, 154, 35, 0.6)'
     },
     textInput: {
       width: '90%',
