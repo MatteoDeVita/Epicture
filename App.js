@@ -17,7 +17,7 @@ const MyStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Home"
           options={{
             title: 'EPIMGUR MOBILE APP',
@@ -31,9 +31,9 @@ const MyStack = () => {
           }}
         >
           {(props) => <Log {...props} setUsername={setUsername} setAccessToken={setAccessToken} />}
-        </Stack.Screen>
+        </Stack.Screen> */}
         <Stack.Screen
-          name="io"
+          name="Epimgur"
         >
           {(props) => <InterfacesWithDownBar {...props} username={username} accessToken={accessToken}/>}
         </Stack.Screen>
