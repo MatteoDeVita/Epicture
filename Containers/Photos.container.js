@@ -56,8 +56,10 @@ export default class PhotosContainer extends Component {
         this.updateData()
     }
 
-    render() {        
-    const { loading, data, error } = this.state    
+   
+    render() {
+    
+    const { loading, data, error } = this.state
     if (error !== '') {
         return (
             <ErrorDialog
@@ -70,7 +72,8 @@ export default class PhotosContainer extends Component {
     }
     return (
         <Photos
-            data={data}            
+            data={data}
+            refreshHandler={this.updateData}
         />
         )
     }

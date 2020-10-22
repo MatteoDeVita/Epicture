@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { View , FlatList, ScrollView} from 'react-native'
+import { refresh } from 'react-native-app-auth'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import {Text ,Button, TextInput, Card, Title, Paragraph} from 'react-native-paper'
+import RefreshButton from '../Components/RefreshButton.component'
 
-const DataDisplayer = ({data, updateData}) => {
-    // updateData() 
+const DataDisplayer = ({data}) => {
     return data.map((elem, index) => (
         <Card
             key={index}
@@ -24,14 +25,18 @@ const DataDisplayer = ({data, updateData}) => {
     ))
 }
 
-const Photos = ({data, updateData}) => {
+const Photos = ({data, refreshHandler}) => {
     return (
-        <ScrollView>
-            <DataDisplayer
-                data={data}
-                updateData={updateData}
-            />
-        </ScrollView>
+        <View>
+           <RefreshButton
+                refreshHandler={refreshHandler}
+           />
+            <ScrollView>
+                <DataDisplayer
+                    data={data}
+                />
+            </ScrollView>
+        </View>
     )
 };
 
