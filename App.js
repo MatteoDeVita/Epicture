@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import {StyleSheet, View , Button, Text} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Log from './Components/Log'
-import { InterfacesWithDownBar } from './Components/Bars'
+import Log from './Components/Log.component'
+import { InterfacesWithDownBar } from './Components/Bars.component'
 
 
 const Stack = createStackNavigator()

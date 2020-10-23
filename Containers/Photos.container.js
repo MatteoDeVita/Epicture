@@ -3,6 +3,7 @@ import { Component } from 'react'
 import Photos from "../Components/Photos.component"
 import LoadingIndicator from '../Components/LoadingIndicator.component'
 import ErrorDialog from '../Components/ErrorDialog.component'
+import { acc } from 'react-native-reanimated'
 
 const loadingIndicator = () => (
     <LoadingIndicator
@@ -39,6 +40,8 @@ export default class PhotosContainer extends Component {
             else {
                 this.setState({
                     data: json.data.map(value => ({
+                        favortie: value.favorite,
+                        id: value.id,
                         link: value.link,
                         title: value.title,
                         name: value.name,
@@ -58,23 +61,24 @@ export default class PhotosContainer extends Component {
 
    
     render() {
-    
-    const { loading, data, error } = this.state
-    if (error !== '') {
+        const { accessToken } = this.props
+        const { loading, data, error } = this.state
+        if (error !== '') {
+            return (
+                <ErrorDialog
+                    visible
+                    message='An error occured while trying to fetch the user images'
+                    errorMessage={error}
+                    onPressHandler={() => this.setState({error: ''})}
+                />
+            )
+        }
         return (
-            <ErrorDialog
-                visible
-                message='An error occured while trying to fetch the user images'
-                errorMessage={error}
-                onPressHandler={() => this.setState({error: ''})}
+            <Photos
+                data={data}
+                refreshHandler={this.updateData}
+                accessToken={accessToken}
             />
-        )
-    }
-    return (
-        <Photos
-            data={data}
-            refreshHandler={this.updateData}
-        />
         )
     }
 }
