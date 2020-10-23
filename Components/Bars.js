@@ -26,7 +26,7 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
     [
       { key: 'photos', title: 'Photos', icon: 'google-photos' },
       { key: 'upload', title: 'Upload', icon: 'cloud-upload' },
-      { key: 'search', title: 'Search', icon: 'crop' },
+      { key: 'search', title: 'Search', icon: 'magnify' },
       { key: 'favorites', title: 'Favorites', icon: 'star' }
     ]
   );
