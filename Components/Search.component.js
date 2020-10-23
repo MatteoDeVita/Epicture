@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { View, VirtualizedList } from 'react-native'
 import VideoPlayer from 'react-native-video-player'
 import CardStyles from '../stylesheets/Card.stylesheet'
+import SearchStyles from '../stylesheets/Search.stylesheet'
 
 const SearchQueryDisplayer = ({data, queryString}) => {    
     if (data.length === 0)
@@ -50,17 +51,22 @@ const SearchQueryDisplayer = ({data, queryString}) => {
 const Search = ({searchFunction, data}) => {
     const [queryString, setQueryString] = useState("")
     return (
-        <View>
-            <TextInput
-            placeholder="Photo's name"
-            onChangeText={text => setQueryString(text)}
-            />
-                <Button
-                title="rechercher"
-                onPress={() => searchFunction(queryString)}
+        <View style={SearchStyles.topView}>
+            <View>
+                <TextInput
+                    placeholder="What are you looking for ?"
+                    onChangeText={text => setQueryString(text)}
+                    style={SearchStyles.textInput}
+                    mode="outlined"
+                />
+                <Button                
+                    onPress={() => searchFunction(queryString)}
+                    style={SearchStyles.searchButton}
+                    color='white'                    
                 >
-                    rechercher (modifer css pour comme vue photos)
+                    Search
                 </Button>
+            </View>
             <ScrollView>
                 <SearchQueryDisplayer
                     data={data}
