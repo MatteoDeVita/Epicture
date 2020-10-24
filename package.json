@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "doc": "browse doc/index.html"
   },
   "dependencies": {
     "@bearer/node-agent": "^3.3.0",
