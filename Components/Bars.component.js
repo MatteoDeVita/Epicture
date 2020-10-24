@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Appbar,  BottomNavigation, Text } from 'react-native-paper'
-import { Platform} from 'react-native'
+import { Platform, View} from 'react-native'
 import SearchContainer from '../Containers/Search.container'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import UploadContainer from '../Containers/Upload.container'
@@ -12,7 +12,7 @@ const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 const TopBar = () => {
     return (
     <Appbar.Header>
-        <Appbar.Content title="Title" subtitle={'Subtitle'} />
+        <Appbar.Content title="title" subtitle={'Subtitle'} />
         <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
     </Appbar.Header>
     )
@@ -56,11 +56,12 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
   }
 
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
+      <BottomNavigation
+        activeColor='rgb(238, 154, 35)'
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+      />
   );
 };
 

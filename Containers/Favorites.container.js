@@ -15,8 +15,7 @@ export default class FavoritesContainer extends Component {
     }
 
     updateFavorites() {
-        const { username, accessToken } = this.props
-        console.log('UPDATE DATA FAVORITES')
+        const { username, accessToken } = this.props        
         this.setState({loading: true})
         fetch(`https://api.imgur.com/3/account/${username}/favorites`, {
             headers: {
@@ -56,7 +55,6 @@ export default class FavoritesContainer extends Component {
     render() {
         const { username, accessToken } = this.props
         const { data } = this.state
-        console.log('DATA : ', data)
         return (
             <Favorites
                 data={data}
