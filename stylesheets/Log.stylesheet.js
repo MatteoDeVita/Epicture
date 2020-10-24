@@ -29,7 +29,7 @@ export default LogStyle = StyleSheet.create ({
         borderColor: 'white',
         width: '75%',
         marginLeft: '12.5%',
-        marginTop: 50,
+        marginTop: '35%',
         height: 80,
     },
     buttonText: {
@@ -41,9 +41,9 @@ export default LogStyle = StyleSheet.create ({
         fontFamily: 'system font'
     },
     signUpText: {
-        marginTop: '3%',
         color: 'blue',
         textDecorationLine: 'underline',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: '50%'
     }
 })

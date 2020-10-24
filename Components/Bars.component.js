@@ -9,15 +9,6 @@ import FavoritesContainer from '../Containers/Favorites.container'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 
-const TopBar = () => {
-    return (
-    <Appbar.Header>
-        <Appbar.Content title="title" subtitle={'Subtitle'} />
-        <Appbar.Action icon={MORE_ICON} onPress={() => {}} />
-    </Appbar.Header>
-    )
-};
-
 const InterfacesWithDownBar = ({username, accessToken}) => {
   const [index, setIndex] = useState(0);
   const [routes] = React.useState(
@@ -65,4 +56,4 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
   );
 };
 
-export  {TopBar, InterfacesWithDownBar};
+export  {InterfacesWithDownBar};
