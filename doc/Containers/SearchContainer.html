@@ -1,0 +1,49 @@
+<h2 id="search-container">Search Container</h2>
+<ul>
+<li>In order to get the searched images from the imgur API, the search container calls this function :</li>
+</ul>
+<pre><code> updateData(queryString) {
+        console.log(&#39;queryString : &#39;, queryString)
+        fetch(`https://api.imgur.com/3/gallery/search/{{sort}}/{{window}}/{{page}}?q=${queryString}`, {
+            headers: {
+                Authorization: &#39;Client-ID 06a2f239b8f71ea&#39;
+            }
+        })
+        .then(response =&gt; response.json())
+        .then(json =&gt; {
+            this.setState({
+                data: json.data.slice(0, 15).map(item =&gt; {
+                    return ({
+                        ids: item.images != undefined ? item.images.map(image =&gt; image.id) : [item.id],
+                        links: item.images != undefined ? item.images.map(image =&gt; image.link) : [item.link],
+                        title: item.title,
+                        name: item.name,
+                        description: item.description
+                    })})                    
+            })
+        })
+        .catch(err =&gt; console.error(err))
+        .finally(() =&gt; {})
+    }
+</code></pre><ul>
+<li><p><strong>Container for the search view</strong></p>
+</li>
+<li><p>Props :</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accessToken</td>
+<td>String</td>
+<td>Current sesssion access token given by imgur API</td>
+</tr>
+</tbody>
+</table>

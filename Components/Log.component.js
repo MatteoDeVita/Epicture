@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react'
 import { StyleSheet, View, Text, Linking, Alert } from 'react-native'
 // import TextField from './TextField'
 import Button from 'apsl-react-native-button'
-import EpictureLogo from './EpictureLogo'
+import EpictureLogo from './EpictureLogo.component'
 import { TextInput} from 'react-native-paper'
 import LogStyle from '../stylesheets/Log.stylesheet';
 import { 
@@ -11,13 +11,6 @@ import {
     Button as PaperButton
 } from 'react-native-paper'
 import { authorize } from 'react-native-app-auth'
-
-const data = new FormData()
-
-data.append('refresh_token', 'a3bda8db92795258bcad7e1b3da512d391be504c')
-data.append('client_id', '06a2f239b8f71ea')
-data.append('client_secret', '751474a3a7fd3504764f9fd97ffe91b237629484')
-data.append('grant_type', 'refresh_token')
 
 export default class Log extends Component {
     

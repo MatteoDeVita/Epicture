@@ -1,0 +1,64 @@
+<h2 id="favorites-container">Favorites Container</h2>
+<ul>
+<li>In order to get the favorites images from the imgur API, the favorite container calls this function :</li>
+</ul>
+<pre><code>updateFavorites() {
+        const { username, accessToken } = this.props        
+        this.setState({loading: true})
+        fetch(`https://api.imgur.com/3/account/${username}/favorites`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then(response =&gt; response.json())
+        .then(json =&gt; {
+            if (json.status != 200)
+                this.setState({
+                    error: json.data.error,
+                    loading: false
+                })
+            else {
+                this.setState({
+                    data: json.data.map(value =&gt; ({
+                        id: value.id,
+                        link: value.link,
+                        title: value.title,
+                        name: value.name,
+                        description: value.description
+                    })),
+                    loading: false
+                })
+            }
+        })
+        .catch(err =&gt; {
+            this.setState({error: true})
+            console.error(err)
+        })
+    }
+</code></pre><ul>
+<li><p><strong>Container for the favorite view</strong></p>
+</li>
+<li><p>Props :</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>String</td>
+<td>Currently logged in user&#39;s username</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>String</td>
+<td>Current sesssion access token given by imgur API</td>
+</tr>
+</tbody>
+</table>
