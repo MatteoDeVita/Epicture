@@ -23,7 +23,6 @@ export default class PhotosContainer extends Component {
     }
 
     updateData() {
-        console.log('UPDATE DATA')
         const { username, accessToken } = this.props
         fetch(`https://api.imgur.com/3/account/${username}/images`, {
             headers: {
@@ -40,8 +39,6 @@ export default class PhotosContainer extends Component {
             else {
                 this.setState({
                     data: json.data.map(value => ({
-                        favortie: value.favorite,
-                        id: value.id,
                         link: value.link,
                         title: value.title,
                         name: value.name,

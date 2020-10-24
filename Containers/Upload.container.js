@@ -16,7 +16,7 @@ export default class UploadComponent extends Component {
     uploadImage(image, postTitle) {
         this.setState({
             loading: true
-        })
+        })        
         const { accessToken } = this.props
         const data = new FormData()
         data.append('image', image.data)

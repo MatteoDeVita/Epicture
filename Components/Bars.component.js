@@ -5,6 +5,7 @@ import SearchContainer from '../Containers/Search.container'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import UploadContainer from '../Containers/Upload.container'
 import PhotosContainer from '../Containers/Photos.container'
+import FavoritesContainer from '../Containers/Favorites.container'
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical'
 
@@ -16,9 +17,6 @@ const TopBar = () => {
     </Appbar.Header>
     )
 };
-
-const AlbumsRoute = () => <Text>Test1</Text>;
-const RecentsRoute = () => <Text>Test2</Text>;
 
 const InterfacesWithDownBar = ({username, accessToken}) => {
   const [index, setIndex] = useState(0);
@@ -46,9 +44,14 @@ const InterfacesWithDownBar = ({username, accessToken}) => {
           accessToken={accessToken}
         />;
       case 'search':
-          return <SearchContainer/>;
+          return <SearchContainer
+            accessToken={accessToken}
+          />;
       case 'favorites':
-          return <RecentsRoute/>;
+          return <FavoritesContainer
+            username={username}
+            accessToken={accessToken}
+          />
     }
   }
 

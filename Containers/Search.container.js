@@ -21,8 +21,9 @@ export default class SearchContainer extends Component {
         .then(response => response.json())
         .then(json => {
             this.setState({
-                data: json.data.map(item => {
+                data: json.data.slice(0, 15).map(item => {
                     return ({
+                        ids: item.images != undefined ? item.images.map(image => image.id) : [item.id],
                         links: item.images != undefined ? item.images.map(image => image.link) : [item.link],
                         title: item.title,
                         name: item.name,
@@ -35,12 +36,14 @@ export default class SearchContainer extends Component {
     }
 
     render() {
+        const { accessToken } = this.props
         const { data } = this.state
         return (
             <View>
                 <Search
                     searchFunction={this.updateData}
                     data={data}
+                    accessToken={accessToken}
                 />
             </View>
         )
