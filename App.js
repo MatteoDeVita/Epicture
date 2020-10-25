@@ -27,13 +27,14 @@ const MyStack = () => {
             headerTintColor: '#fff',
             headerTitleStyle: {
               fontWeight: 'bold',
+              textAlign: 'center',
             },
           }}
         >
           {(props) => <Log {...props} setUsername={setUsername} setAccessToken={setAccessToken} />}
         </Stack.Screen>
         <Stack.Screen
-          name="Epimgur"          
+          name="Epimgur"  
         >
           {(props) => <InterfacesWithDownBar {...props} username={username} accessToken={accessToken}/>}
         </Stack.Screen>
